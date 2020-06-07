@@ -117,7 +117,12 @@ public class GameManager : MonoBehaviour {
 	public void targetHit (int scoreAmount, float timeAmount)
 	{
 		// increase the score by the scoreAmount and update the text UI
-		score += scoreAmount;
+		if (score >= 0 && scoreAmount > 0) {
+			score += scoreAmount;
+		} else if (score > 0 && scoreAmount < 0) {
+			score += scoreAmount;
+		}			
+		
 		mainScoreDisplay.text = score.ToString ();
 		
 		// increase the time by the timeAmount
